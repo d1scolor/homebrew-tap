@@ -1,8 +1,8 @@
 class Builtinctl < Formula
   desc "Control and automate the Mac built-in display"
   homepage "https://github.com/d1scolor/builtinctl"
-  url "https://github.com/d1scolor/builtinctl/releases/download/v0.1.2/builtinctl-0.1.2-macos-arm64.tar.gz"
-  sha256 "d0a4eb357d0fe5c7955208b61ff40c0a4633fa9f3b06f413f5c077464cf60fc1"
+  url "https://github.com/d1scolor/builtinctl/releases/download/v0.1.3/builtinctl-0.1.3-macos-arm64.tar.gz"
+  sha256 "24be077c1b4ac15b7b98aa218c575e1523e145ed65a8f8cf44498d1636f45139"
   license "MIT"
 
   depends_on arch: :arm64
@@ -40,6 +40,6 @@ class Builtinctl < Formula
   end
 
   test do
-    assert_match "builtinctl 0.1.2", shell_output("#{bin}/builtinctl --version")
+    assert_match "builtinctl 0.1.3", shell_output("#{bin}/builtinctl --version")
   end
 end
