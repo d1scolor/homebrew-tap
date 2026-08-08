@@ -1,8 +1,8 @@
 class Builtinctl < Formula
   desc "Control and automate the Mac built-in display"
   homepage "https://github.com/d1scolor/builtinctl"
-  url "https://github.com/d1scolor/builtinctl/releases/download/v0.1.3/builtinctl-0.1.3-macos-arm64.tar.gz"
-  sha256 "24be077c1b4ac15b7b98aa218c575e1523e145ed65a8f8cf44498d1636f45139"
+  url "https://github.com/d1scolor/builtinctl/releases/download/v0.1.4/builtinctl-0.1.4-macos-arm64.tar.gz"
+  sha256 "62cef03b43a7d5ffdf2aa4f69ce2245fc152c6f03b81e1064451c04176b7cb27"
   license "MIT"
 
   depends_on arch: :arm64
@@ -27,9 +27,13 @@ class Builtinctl < Formula
       Then explicitly enable automation with:
         builtinctl resume
 
-      After upgrading an installed agent, refresh its safety copy with:
-        builtinctl install-agent
-        builtinctl resume
+      Homebrew upgrades apply to an installed agent at its next start, such as
+      the next login or reboot. To apply one immediately while preserving its
+      enabled or suspended state, run:
+        builtinctl restart-agent
+
+      Agents installed before builtinctl 0.1.4 need one `restart-agent` to
+      migrate; later upgrades require no agent reinstall.
 
       Before uninstalling the formula, remove automation safely with:
         builtinctl uninstall-agent
@@ -40,6 +44,6 @@ class Builtinctl < Formula
   end
 
   test do
-    assert_match "builtinctl 0.1.3", shell_output("#{bin}/builtinctl --version")
+    assert_match "builtinctl 0.1.4", shell_output("#{bin}/builtinctl --version")
   end
 end
